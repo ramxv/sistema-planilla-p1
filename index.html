@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Planilla</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <!-- JavaScript -->
+  <script defer src="main.js"></script>
+  <!-- GOOGLE FONTS  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=Outfit:wght@300;400;500;700&family=Poppins:wght@300;400;500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="main-container">
+    <form id="form" action="/" method="GET">
+      <h1>Sistema de Planilla</h1>
+      <hr>
+      <!-- * Sección Cédula -->
+      <div class="cedula-container">
+        <label for="cedula" id="label-cedula">Cédula</label>
+        <select name="prefijo" id="cedula">
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+        </select>
+        <input type="text" name="tomo" id="cedula-tomo" placeholder="0000" min="10" max="9999" onkeypress="return soloNumeros(event)" maxlength="4" autocomplete="off" onblur="validacionCed()" required>
+        <input type="text" name="asiento" id="cedula-asiento" placeholder="00000" min="10" max="99999" onkeypress="return soloNumeros(event)" maxlength="5" autocomplete="off" onblur="validacionCed()" required>
+      </div>
+
+      <!-- * Sección Nombres -->
+      <div class="nombre-container">
+        <div class="input-box">
+          <label for="primer-nombre">Primer Nombre</label>
+          <input type="text" name="primer-nombre" id="primer-nombre" maxlength="15" onkeypress="return soloLetras(event)" onblur="validacionNombre()" required>
+        </div>
+        <div class="input-box">
+          <label for="segundo-nombre">Segundo Nombre</label>
+          <input type="text" name="segundo-nombre" id="segundo-nombre" maxlength="15" onkeypress="return soloLetras(event)" >
+        </div>
+        <div class="input-box">
+          <label for="primer-apellido">Primer Apellido</label>
+          <input type="text" name="primer-apellido" id="primer-apellido" maxlength="15" onkeypress="return soloLetras(event)" onblur="validacionApellido()" required>
+        </div>
+        <div class="input-box">
+          <label for="segundo-apellido">Segundo Apellido</label>
+          <input type="text" name="segundo-apellido" id="segundo-apellido" maxlength="15" onkeypress="return soloLetras(event)" >
+        </div>
+        <div class="input-box">
+          <label for="select-casada">¿Tiene apellido de casada?</label>
+          <select name="select-casada" id="select-casada">
+            <option value="No">No</option>
+            <option value="Sí">Sí</option>
+          </select>
+        </div>
+        <div class="input-box">
+          <label for="ape-casada">Apellido de Casada</label>
+          <input type="text" name="ape-casada" id="ape-casada" maxlength="15" onkeypress="return soloLetras(event)">
+        </div>
+      </div>
+
+      <!-- * Sección Salario -->
+      <div class="salario-container">
+        <div class="input-box">
+          <label for="h-trabajadas">Horas Trabajadas</label>
+          <input type="text" name="h-trabajadas" id="h-trabajadas" onkeypress="return soloNumeros(event)" maxlength="3" required>
+        </div>
+        <div class="input-box">
+          <label for="s-hora">Salario por Hora</label>
+          <input type="text" name="s-hora" id="s-hora" onkeypress="return soloDecimal(event)" maxlength="5" onblur="calcImpuestos()" required>
+        </div>
+      </div>
+      <hr>
+      <!-- * Sección Deducciones -->
+      <div class="deducciones-container">
+        <div class="input-deducciones">
+          <label for="Salario Bruto">Salario Bruto</label>
+          <input type="text" name="s-bruto" id="s-bruto" disabled >
+        </div>
+        <div class="input-deducciones">
+          <label for="Seguro Social">Seguro Social</label>
+          <input type="text" name="s-social" id="s-social" disabled>
+        </div>
+        <div class="input-deducciones">
+          <label for="Seguro Educativo">Seguro Educativo</label>
+          <input type="text" name="s-edu" id="s-edu" disabled>
+        </div>
+        <div class="input-deducciones">
+          <label for="I/R">I/R</label>
+          <input type="text" name="i-r" id="i-r" disabled>
+        </div>
+        <div class="input-deducciones">
+          <label for="Descuento1">Descuento1</label>
+          <input type="text" value="0" id="desc-1" maxlength="5" onkeypress="return soloDecimal(event)" onblur="calcImpuestos()">
+        </div>
+        <div class="input-deducciones">
+          <label for="Descuento2">Descuento2</label>
+          <input type="text"  value="0" id="desc-2" maxlength="5" onkeypress="return soloDecimal(event)" onblur="calcImpuestos()">
+        </div>
+        <div class="input-deducciones">
+          <label for="Descuento3">Descuento3</label>
+          <input type="text"  value="0" id="desc-3" maxlength="5" onkeypress="return soloDecimal(event)" onblur="calcImpuestos()">
+        </div>
+        <div class="input-deducciones">
+          <label for="Total de Deducciones">Total de Deducciones</label>
+          <input type="text" name="t-dedu" id="t-dedu" disabled>
+        </div>
+        <div class="input-deducciones">
+          <label for="Salario Neto">Salario Neto</label>
+          <input type="text" name="s-neto" id="s-neto" disabled>
+        </div>
+      </div>
+      
+    </form>
+  </div>
+</body>
+</html>

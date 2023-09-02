@@ -1,0 +1,98 @@
+html {
+  font-family: 'Outfit', sans-serif;
+  background: rgb(195,55,100);
+  background: linear-gradient(27deg, rgba(195,55,100,1) 0%, rgba(29,38,113,1) 100%);
+}
+
+/* ! Sección Main */
+
+.main-container{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  width: 1040px;
+  padding: 30px;
+  margin: auto;
+}
+
+/* ! Sección Formulario */
+
+h1{
+  text-transform: uppercase;
+  text-align: center;
+  color: #000000;
+  font-weight: 500;
+  font-size: x-large;
+}
+
+select{
+  height: 34px;
+  width: 50px;
+  text-align: center;
+  border-radius: 0%;
+}
+
+label{
+  display: block;
+  padding-bottom: 5px;
+}
+
+#form{
+  background-color: #ffff;
+  width: 720px;
+  padding: 16px;
+  border: 1px solid black;
+  margin: auto;
+}
+
+/* * Input */
+
+/* input:invalid{
+  border: 1px solid red;
+}
+
+input:valid{
+  border: 1px solid #8ac926;
+} */
+
+/* * Cedula */
+.cedula-container{
+  padding: 8px; 
+}
+
+.cedula-container input{
+  display: inline;
+  height: 30px;
+}
+
+
+/* * Nombre */
+.nombre-container .input-box{
+  padding: 8px;
+}
+
+.nombre-container .input-box input{
+  height: 25px;
+}
+
+/* * Salario */
+.salario-container .input-box{
+  padding: 8px;
+}
+
+.salario-container .input-box input{
+  height: 25px;
+}
+/* * Deducciones */
+
+.input-deducciones input{
+  display: inline;
+}
+
+.deducciones-container .input-deducciones{
+  padding: 8px;
+}
+
+.deducciones-container .input-deducciones input{
+  height: 25px;
+
+}
