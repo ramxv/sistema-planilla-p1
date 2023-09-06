@@ -46,34 +46,40 @@ function calcImpuestos() {
   const s_edu = Math.round(s_bruto * 0.0125 * 100)/ 100;
   const i_renta = Math.round(s_bruto * 0.15 * 100)/ 100;
   
-  validarSxH(s_hora, s_bruto, s_social, s_edu, i_renta);
-
-  totalDeducciones(s_social, s_edu, i_renta, s_hora);
-
   montoAnual(monto_anual, i_renta);
-
-  salNeto();
+  
+  validarSxH(s_hora, s_bruto, s_social, s_edu, i_renta);
 }
 
-function salNeto() {
-  const s_bruto = document.getElementById("s-bruto").value;
-  const t_dedu = document.getElementById("t-dedu").value;
-  const s_neto = Math.round((s_bruto - t_dedu)*100)/100;
-  document.getElementById("s-neto").value = s_neto;
-}
-
-// ! Calcula el total de las deducciones
-function totalDeducciones(s_social, s_edu, i_renta, s_hora) {
+// ! Calcula el total de las deducciones y SalarioNeto
+function totalDedu_SalNeto() {
+  const h_trabajados = document.getElementById("h-trabajadas").value;
+  const s_hora = document.getElementById("s-hora").value;
+  const s_bruto = Math.round((parseFloat(h_trabajados) * parseFloat(s_hora) * 100)) / 100;
+  const s_social = Math.round(s_bruto * 0.0975 * 100) / 100;
+  const s_edu = Math.round(s_bruto * 0.0125 * 100)/ 100;
+  const i_renta = Math.round(s_bruto * 0.15 * 100)/ 100;
   const desc1 = document.getElementById("desc-1").value;
   const desc2 = document.getElementById("desc-2").value;
   const desc3 = document.getElementById("desc-3").value;
 
-  const t_dedu = Math.round( (parseFloat(s_social) + parseFloat(s_edu) + parseFloat(i_renta) + parseFloat(desc1) + parseFloat(desc2) + parseFloat(desc3)) * 100 )/ 100;
+  const t_dedu = Math.round((parseFloat(s_social) + parseFloat(s_edu) + parseFloat(i_renta) + parseFloat(desc1) + parseFloat(desc2) + parseFloat(desc3)) * 100 )/ 100;
+  const s_neto = Math.round((s_bruto - t_dedu)*100)/100;
 
   if (s_hora == "") {
     document.getElementById("t-dedu").value = 0;
+    document.getElementById("s-neto").value = 0;
   } else {
     document.getElementById("t-dedu").value = t_dedu;
+    document.getElementById("s-neto").value = s_neto;
+  }
+
+  if ((isNaN(document.getElementById("t-dedu").value) && isNaN(document.getElementById("s-neto").value))) {
+    document.getElementById("t-dedu").value = 0;
+    document.getElementById("s-neto").value = 0;
+  } else {
+    document.getElementById("t-dedu").value = t_dedu;
+    document.getElementById("s-neto").value = s_neto;
   }
 }
 
