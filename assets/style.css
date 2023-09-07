@@ -1,0 +1,116 @@
+html {
+  font-family: 'Outfit', sans-serif;
+  background: rgb(195,55,100);
+  background-image: linear-gradient(0deg, rgba(195,55,100,1) 0%, rgba(29,38,113,1) 100%);
+}
+
+/* ! Sección Main */
+
+.main-container{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  width: 1040px;
+  padding: 30px;
+  margin: auto;
+}
+
+/* ! Sección Formulario */
+
+h1{
+  text-transform: uppercase;
+  text-align: center;
+  color: #000000;
+  font-weight: 500;
+  font-size: x-large;
+}
+
+select{
+  height: 34px;
+  width: 50px;
+  text-align: center;
+  border-radius: 0%;
+}
+
+/* input:invalid{
+  border: 1px solid red;
+}
+
+input:valid{
+  border: 1px solid #8ac926;
+} */
+
+#form{
+  background-color: #ffff;
+  width: 720px;
+  padding: 16px;
+  border: 1px solid black;
+  margin: auto;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+/* ! Sección Cedula */
+
+.cedula-container{
+  padding: 8px; 
+}
+
+.cedula-container input{
+  display: inline;
+  height: 30px;
+}
+
+
+/* ! Sección Nombres */
+
+.nombre-container label{
+  display: block;
+  padding-bottom: 5px;
+}
+
+.nombre-container .input-box{
+  padding: 8px;
+}
+
+.nombre-container .input-box input{
+  height: 25px;
+}
+
+/* ! Sección Salario */
+
+.salario-container label{
+  display: block;
+}
+
+.salario-container input{
+  text-align: right;
+}
+
+.salario-container .input-box{
+  padding: 8px;
+}
+
+.salario-container .input-box input{
+  height: 25px;
+}
+
+/* ! Sección Deducciones */
+
+.deducciones-container{
+  text-align: left;
+  display: grid;
+  grid-template-columns: 240px 240px 240px;
+}
+
+.input-deducciones input{
+  text-align: right;
+}
+
+.deducciones-container .input-deducciones{
+  padding: 8px;
+  display: grid;
+  justify-self: center;
+}
+
+.deducciones-container .input-deducciones input{
+  height: 25px;
+}
