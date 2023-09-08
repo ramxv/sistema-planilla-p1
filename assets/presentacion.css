@@ -1,0 +1,122 @@
+*{
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html{
+  padding-top: 80px;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  background-image: linear-gradient(to right top, #364649, #44575b, #52696e, #617c82, #708f96);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+/* ! Contenedor Principal */
+.main-container{
+  width: 1040px;
+  margin: auto;
+  padding: 50px;
+  border: 1px solid black;
+  background-color:rgb(250, 250, 250);
+  backdrop-filter: blur(50px);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+/* ! Sección Encabezado */
+
+.encabezado{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+.uni-encabezado{
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.uni-encabezado h1{
+  font-size: x-large;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+img{
+  width: 150px;
+  height: 150px;
+}
+
+/* ! Sección Proyecto */
+.proyecto{
+  margin-bottom: 50px;
+  font-size: larger;
+}
+
+/* ! Sección Profesor */
+.profesor{
+  margin-bottom: 50px;
+}
+
+.profesor h3{
+  font-weight: bold;
+}
+
+.profesor p{
+  font-size:large;
+}
+
+/* ! Sección Integrantes */
+
+.integrantes{
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.integrantes h3{
+  font-weight: bold;
+}
+
+.integrantes p {
+  padding: 5px;
+  margin-bottom: 15px;
+  display: inline; 
+  font-size: large;
+}
+
+.integrantes .int-1{
+  margin: 20px;
+}
+
+/* ! Sección Fecha */
+.fecha-entrega{
+  margin-bottom: 50px;
+  font-size: large;
+  font-weight: bold;
+}
+
+/* ! Sección Botón */
+
+a{
+  display:grid;
+  height: 40px;
+  width: 120px;
+  margin: auto;
+  place-items: center;
+  color: #000;
+  text-decoration: none;
+  border: 1px solid black;
+}
+
+a:hover{
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
+a:active{
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
