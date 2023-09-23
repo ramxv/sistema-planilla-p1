@@ -1,6 +1,18 @@
-html {
+:root {
+  --arrow-bg: rgba(255, 255, 255, 0.3);
+  --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
+  --option-bg: #fff;
+  --select-bg: rgba(255, 255, 255, 0.6);
+}
+
+body{
+  animation: fade-in 1s forwards;
+  height: 100%;
+  width: 100%;
   font-family: 'Outfit', sans-serif;
-  background-image: linear-gradient(to right top, #364649, #44575b, #52696e, #617c82, #708f96);
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(#141e30, #243b55);
 }
 
 /* ! Sección Main */
@@ -8,7 +20,6 @@ html {
 .main-container{
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  width: 1040px;
   padding: 30px;
   margin: auto;
 }
@@ -16,62 +27,102 @@ html {
 /* ! Sección Formulario */
 
 h1{
+  letter-spacing: 1px;
   text-transform: uppercase;
   text-align: center;
-  color: #000000;
+  color: #fff;
   font-weight: 500;
   font-size: x-large;
 }
 
 select{
-  height: 34px;
-  width: 50px;
-  text-align: center;
-  border-radius: 0%;
+  /* Reset */
+  appearance: none;
+  border: 0;
+  outline: 0;
+  /* Personalize */
+  height: 2rem;
+  width: 6rem;
+  padding: 0rem 4rem 0rem 1rem;
+  background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
+    linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
+  color: #000;
+  border-radius: 0.25em;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
-/* input:invalid{
-  border: 1px solid red;
+&::-ms-expand {
+  display: none;
 }
-
-input:valid{
-  border: 1px solid #8ac926;
-} */
+/* Remove focus outline */
+&:focus {
+  outline: none;
+}
+/* <option> colors */
+option {
+  color: #000;
+  background-color: var(--option-bg);
+}
 
 #form{
-  background-color: #ffff;
+  /* background-color: #ffff; */
+  color: #fff;
+  font-weight: 500;
   width: 720px;
-  padding: 16px;
-  border: 1px solid black;
   margin: auto;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 16px;
+  background: rgba( 255, 255, 255, 0.15 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 18px );
+  -webkit-backdrop-filter: blur( 18px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border-radius: 1rem;
 }
 
 /* ! Sección Cedula */
 
 .cedula-container{
   padding: 8px; 
+  margin-bottom: 10px;
 }
 
 .cedula-container input{
+  letter-spacing: 1px;
   display: inline;
   height: 30px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
 }
-
+/* 
+.cedula-container input::placeholder{
+  color: #000;
+} */
 
 /* ! Sección Nombres */
+
+.nombre-container .input-box{
+  padding: 8px;
+}
 
 .nombre-container label{
   display: block;
   padding-bottom: 5px;
 }
 
-.nombre-container .input-box{
-  padding: 8px;
-}
-
 .nombre-container .input-box input{
-  height: 25px;
+  letter-spacing: 1px;
+  font-style: 'Roboto', sans-serif;
+  font-size: 14px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
 }
 
 /* ! Sección Salario */
@@ -88,8 +139,25 @@ input:valid{
   padding: 8px;
 }
 
-.salario-container .input-box input{
-  height: 25px;
+.salario-container .input-box #h-trabajadas,
+.salario-container .input-box #s-hora{
+  letter-spacing: 2px;
+  font-size: 14px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+}
+
+.salario-container .input-box #s-bruto{
+  letter-spacing: 2px;
+  font-size: 14px;
+  color: #fff;
+  height: 30px;
+  border: none;
+  box-shadow: inset -5px -5px 9px rgba(255,255,255,0), inset 5px 5px 9px rgba(94,104,121,0.3);
 }
 
 /* ! Sección Deducciones */
@@ -111,10 +179,31 @@ input:valid{
 }
 
 .deducciones-container .input-deducciones input{
-  height: 25px;
+  letter-spacing: 2px;
+  font-size: 14px;
+  color: #fff;
+  height: 30px;
+  border: none;
+  box-shadow: inset -5px -5px 9px rgba(255,255,255,0), inset 5px 5px 9px rgba(94,104,121,0.3);
+}
+
+.deducciones-container .input-deducciones #desc-1,
+.deducciones-container .input-deducciones #desc-2,
+.deducciones-container .input-deducciones #desc-3{
+  color: #000;
+  font-size: 14px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
 }
 
 /* ! Sección Botón */
+.button-regresar{
+  margin-top: 15px;
+}
 
 a{
   display:grid;
@@ -124,13 +213,29 @@ a{
   place-items: center;
   color: #000;
   text-decoration: none;
-  border: 1px solid black;
-}
-
-a:hover{
-  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  transition: all .3s;
+  box-shadow: 0px 0px 6px #c5c5c5, 0px 0px 6px #ffffff;
 }
 
 a:active{
-  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  color: #666;
+  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+
+
+@keyframes fade-in {
+  from{
+    background-color: linear-gradient(#141e30, #243b55);
+    opacity: 0;
+    transform: translateY(50vh);
+  }
+
+  to{
+    background-color: linear-gradient(#141e30, #243b55);
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

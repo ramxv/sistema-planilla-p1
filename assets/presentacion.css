@@ -1,30 +1,37 @@
-*{
-  padding: 0;
-  box-sizing: border-box;
-  margin: 0;
+:root {
+  --arrow-bg: rgba(255, 255, 255, 0.3);
+  --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
+  --option-bg: #fff;
+  --select-bg: rgba(255, 255, 255, 0.6);
 }
 
-html{
-  padding-top: 80px;
+body{
+  animation: fade-in 1s backwards ;
+  font-family: 'Outfit', sans-serif;
+  text-align: center;
   height: 100%;
   width: 100%;
-  text-align: center;
-  font-family: 'Outfit', sans-serif;
-  background-image: linear-gradient(to right top, #364649, #44575b, #52696e, #617c82, #708f96);
-  background-position: bottom;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  padding-top: 80px;
+  background: linear-gradient(#141e30, #243b55);
   background-repeat: no-repeat;
-  background-size:cover;
+  background-attachment: fixed;
 }
 
 /* ! Contenedor Principal */
 .main-container{
-  width: 1040px;
+  width: 920px;
   margin: auto;
-  padding: 50px;
-  border: 1px solid black;
-  background-color:rgb(250, 250, 250);
-  backdrop-filter: blur(50px);
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 25px;
+  margin-bottom: 40px;
+  background: rgba( 255, 255, 255, 0.15 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 18px );
+  -webkit-backdrop-filter: blur( 18px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border-radius: 1rem;
 }
 
 /* ! Sección Encabezado */
@@ -54,6 +61,7 @@ img{
 
 /* ! Sección Proyecto */
 .proyecto{
+  letter-spacing: 1px;
   margin-bottom: 50px;
   font-size: larger;
 }
@@ -64,6 +72,7 @@ img{
 }
 
 .profesor h3{
+  letter-spacing: 1px;
   font-weight: bold;
 }
 
@@ -79,6 +88,7 @@ img{
 }
 
 .integrantes h3{
+  letter-spacing: 1px;
   font-weight: bold;
 }
 
@@ -95,6 +105,7 @@ img{
 
 /* ! Sección Fecha */
 .fecha-entrega{
+  letter-spacing: 1px;
   margin-bottom: 50px;
   font-size: large;
   font-weight: bold;
@@ -110,13 +121,28 @@ a{
   place-items: center;
   color: #000;
   text-decoration: none;
-  border: 1px solid black;
-}
-
-a:hover{
-  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  transition: all .3s;
+  box-shadow: 0px 0px 6px #c5c5c5, 0px 0px 6px #ffffff;
 }
 
 a:active{
-  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  color: #666;
+  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+
+@keyframes fade-in {
+  from{
+    background-color: linear-gradient(#141e30, #243b55);
+    opacity: 0;
+    transform: translateY(50vh);
+  }
+
+  to{
+    background-color: linear-gradient(#141e30, #243b55);
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
