@@ -15,4 +15,3 @@ Fue una parte muy interesante poder preveer todos los errores que puede cometer 
 2. Ahorro de recursos en el servidor, al validar los datos en el lado del cliente, se pueden prevenir solicitudes innecesarias al servidor.
 
 3. Permite una mayor seguridad, las validaciones del lado del cliente nos ayuda a prevenir ataques maliciosos como las inyecciones SQL o inyecciones de código.
-
