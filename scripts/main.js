@@ -38,33 +38,52 @@ function calcImpuestos() {
   // * Declaración de variables 
   const h_trabajados = document.getElementById("h-trabajadas").value;
   const s_hora = document.getElementById("s-hora").value;
-  
+
   // * Operaciones de los impuestos
-  const s_bruto = Math.round((parseFloat(h_trabajados) * parseFloat(s_hora) * 100)) / 100;
-  const monto_anual = s_bruto * 12;
-  const s_social = Math.round(s_bruto * 0.0975 * 100) / 100;
-  const s_edu = Math.round(s_bruto * 0.0125 * 100)/ 100;
-  const i_renta = Math.round(s_bruto * 0.15 * 100)/ 100;
-  
-  montoAnual(monto_anual, i_renta);
-  
-  validarSxH(s_hora, s_bruto, s_social, s_edu, i_renta);
+  const s_bruto = (parseFloat(h_trabajados) * parseFloat(s_hora)).toFixed(2);
+  const monto_anual = (s_bruto * 12);
+  const s_social = (s_bruto * 0.0975).toFixed(2);
+  const s_edu = (s_bruto * 0.0125).toFixed(2);
+  const i_renta = (((monto_anual - 11000) * 0.15)/12).toFixed(2);
+
+  if (monto_anual > 11000) {
+    document.getElementById("i-r").value = i_renta;
+  } else {
+    document.getElementById("i-r").value = 0;
+  }
+
+  validarSxH(s_hora, s_bruto, s_social, s_edu, i_renta, h_trabajados);
+}
+
+// ! Calcula el monto anual
+function montoAnual(monto_anual,i_renta) {
+  if (monto_anual > 11000 && monto_anual < 50000) {
+    
+  } else {
+    document.getElementById("i-r").value = 0;
+  }
 }
 
 // ! Calcula el total de las deducciones y SalarioNeto
 function totalDedu_SalNeto() {
   const h_trabajados = document.getElementById("h-trabajadas").value;
   const s_hora = document.getElementById("s-hora").value;
-  const s_bruto = Math.round((parseFloat(h_trabajados) * parseFloat(s_hora) * 100)) / 100;
-  const s_social = Math.round(s_bruto * 0.0975 * 100) / 100;
-  const s_edu = Math.round(s_bruto * 0.0125 * 100)/ 100;
-  const i_renta = Math.round(s_bruto * 0.15 * 100)/ 100;
-  const desc1 = document.getElementById("desc-1").value;
-  const desc2 = document.getElementById("desc-2").value;
-  const desc3 = document.getElementById("desc-3").value;
+  const s_bruto = parseFloat(h_trabajados) * parseFloat(s_hora).toFixed(2);
+  const monto_anual = (s_bruto * 12);
+  const s_social = (s_bruto * 0.0975).toFixed(2);
+  const s_edu = (s_bruto * 0.0125).toFixed(2);
+  const i_renta = (((monto_anual - 11000) * 0.15)/12).toFixed(2);
+  const desc1 = parseFloat(document.getElementById("desc-1").value);
+  const desc2 = parseFloat(document.getElementById("desc-2").value);
+  const desc3 = parseFloat(document.getElementById("desc-3").value);
 
-  const t_dedu = Math.round((parseFloat(s_social) + parseFloat(s_edu) + parseFloat(i_renta) + parseFloat(desc1) + parseFloat(desc2) + parseFloat(desc3)) * 100 )/ 100;
-  const s_neto = Math.round((s_bruto - t_dedu)*100)/100;
+  // // * Restringe el valor de descuento a dos decimales
+  // document.getElementById("desc-1").value = desc1.toFixed(2);
+  // document.getElementById("desc-2").value = desc2.toFixed(2);
+  // document.getElementById("desc-3").value = desc3.toFixed(2);
+
+  const t_dedu = (parseFloat(s_social) + parseFloat(s_edu) + parseFloat(i_renta) + parseFloat(desc1) + parseFloat(desc2) + parseFloat(desc3)).toFixed(2);
+  const s_neto = ((s_bruto - t_dedu)).toFixed(2);
 
   if (s_hora == "") {
     document.getElementById("t-dedu").value = 0;
@@ -74,7 +93,41 @@ function totalDedu_SalNeto() {
     document.getElementById("s-neto").value = s_neto;
   }
 
-  if ((isNaN(document.getElementById("t-dedu").value) && isNaN(document.getElementById("s-neto").value))) {
+  if (isNaN(desc1)) {
+    document.getElementById("desc-1").value = 0;
+  } else {
+    document.getElementById("desc-1").value = desc1.toFixed(2);
+    document.getElementById("t-dedu").value = 0;
+    document.getElementById("s-neto").value = 0;
+  }
+  if (isNaN(desc2)) {
+    document.getElementById("desc-2").value = 0;
+  } else {
+    document.getElementById("desc-2").value = desc2.toFixed(2);
+    document.getElementById("t-dedu").value = 0;
+    document.getElementById("s-neto").value = 0;
+  }
+  if (isNaN(desc3)) {
+    document.getElementById("desc-3").value = 0;
+  } else {
+    document.getElementById("desc-3").value = desc3.toFixed(2);
+    document.getElementById("t-dedu").value = 0;
+    document.getElementById("s-neto").value = 0;
+  }
+
+  validar_td_sn(h_trabajados, s_hora, t_dedu, s_neto);
+
+}
+
+function validar_td_sn(h_trabajados,s_hora,t_dedu,s_neto) {
+  if (isNaN(document.getElementById("t-dedu").value) && isNaN(document.getElementById("s-neto").value)) {
+    document.getElementById("t-dedu").value = 0;
+    document.getElementById("s-neto").value = 0;
+  } else {
+    document.getElementById("t-dedu").value = t_dedu;
+    document.getElementById("s-neto").value = s_neto;
+  }
+  if ((s_hora == "" && h_trabajados == "") || s_hora == "" || h_trabajados == "") {
     document.getElementById("t-dedu").value = 0;
     document.getElementById("s-neto").value = 0;
   } else {
@@ -83,23 +136,14 @@ function totalDedu_SalNeto() {
   }
 }
 
-// ! Calcula el monto anual
-function montoAnual(monto_anual,i_renta) {
-  if (monto_anual > 11000 && monto_anual < 50000) {
-    document.getElementById("i-r").value = i_renta;
-  } else {
-    document.getElementById("i-r").value = 0;
-  }
-}
-
-function validarSxH(s_hora, s_bruto, s_social, s_edu, i_renta) {
-  if (s_hora == "") {
+function validarSxH(s_hora, s_bruto, s_social, s_edu, i_renta, h_trabajados) {
+  if (s_hora == "" || h_trabajados == "") {
     document.getElementById("s-bruto").value = 0;
     document.getElementById("s-social").value = 0;
     document.getElementById("s-edu").value = 0;
     document.getElementById("i-r").value = 0;
   }else{
-    Math.round(parseFloat(document.getElementById("s-bruto").value = s_bruto) *100)/100;
+    (parseFloat(document.getElementById("s-bruto").value = s_bruto)).toFixed(2);
     document.getElementById("s-social").value = s_social;
     document.getElementById("s-edu").value = s_edu;
     document.getElementById("i-r").value = i_renta;

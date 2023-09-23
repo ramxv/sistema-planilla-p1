@@ -17,7 +17,6 @@
   <div class="main-container">
     <form id="form" action="/" method="GET">
       <h1>Sistema de Planilla</h1>
-      <hr>
       <!-- * Sección Cédula -->
       <div class="cedula-container">
         <label for="cedula" id="label-cedula">Cédula</label>
@@ -75,7 +74,7 @@
       <div class="salario-container">
         <div class="input-box">
           <label for="h-trabajadas">Horas Trabajadas</label>
-          <input type="text" name="h-trabajadas" id="h-trabajadas" onkeypress="return soloNumeros(event)" maxlength="3" autocomplete="off" required>
+          <input type="text" name="h-trabajadas" id="h-trabajadas" onkeypress="return soloNumeros(event)" maxlength="3" onblur="calcImpuestos()" autocomplete="off" required>
         </div>
         <div class="input-box">
           <label for="s-hora">Salario por Hora</label>
@@ -88,8 +87,7 @@
       </div>
       <hr>
       <!-- * Sección Deducciones -->
-      <div class="deducciones-container">
-        
+      <div class="deducciones-container">        
         <div class="input-deducciones">
           <label for="Seguro Social">Seguro Social</label>
           <input type="text" name="s-social" id="s-social" disabled>
@@ -104,15 +102,15 @@
         </div>
         <div class="input-deducciones">
           <label for="Descuento1">Descuento1</label>
-          <input type="text" value="0" id="desc-1" maxlength="5" onkeypress="return soloDecimal(event)" onblur="totalDedu_SalNeto()" autocomplete="off">
+          <input type="text" value="0"  id="desc-1" onkeypress="return soloDecimal(event)" onblur="totalDedu_SalNeto()" autocomplete="off">
         </div>
         <div class="input-deducciones">
           <label for="Descuento2">Descuento2</label>
-          <input type="text"  value="0" id="desc-2" maxlength="5" onkeypress="return soloDecimal(event)" onblur="totalDedu_SalNeto()" autocomplete="off">
+          <input type="text"  value="0" id="desc-2" onkeypress="return soloDecimal(event)" onblur="totalDedu_SalNeto()" autocomplete="off">
         </div>
         <div class="input-deducciones">
           <label for="Descuento3">Descuento3</label>
-          <input type="text"  value="0" id="desc-3" maxlength="5" onkeypress="return soloDecimal(event)" onblur="totalDedu_SalNeto()" autocomplete="off">
+          <input type="text"  value="0" id="desc-3" onkeypress="return soloDecimal(event)" onblur="totalDedu_SalNeto()" autocomplete="off">
         </div>
         <div class="input-deducciones">
           <label for="Total de Deducciones">Total de Deducciones</label>
@@ -123,7 +121,6 @@
           <input type="text" name="s-neto" id="s-neto" disabled>
         </div>
       </div>
-      <hr>
       <div class="button-regresar">
         <a href="presentacion.html">Regresar</a>
       </div>
