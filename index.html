@@ -78,7 +78,7 @@
         </div>
         <div class="input-box">
           <label for="s-hora">Salario por Hora</label>
-          <input type="text" name="s-hora" id="s-hora" onkeypress="return soloDecimal(event)" maxlength="5" onblur="calcImpuestos()" autocomplete="off" required>
+          <input type="text" name="s-hora" id="s-hora" onkeypress="return soloDecimal(event) && verificarPunto(event)" maxlength="5" onblur="calcImpuestos()" autocomplete="off" required>
         </div>
         <div class="input-box">
           <label for="Salario Bruto">Salario Bruto</label>
@@ -102,15 +102,15 @@
         </div>
         <div class="input-deducciones">
           <label for="Descuento1">Descuento1</label>
-          <input type="text" value="0"  id="desc-1" onkeypress="return soloDecimal(event)" onblur="totalDedu_SalNeto()" autocomplete="off">
+          <input type="text" value="0"  id="desc-1" onkeypress="return soloDecimal(event) && verificarPunto(event)" onblur="totalDedu_SalNeto()" autocomplete="off">
         </div>
         <div class="input-deducciones">
           <label for="Descuento2">Descuento2</label>
-          <input type="text"  value="0" id="desc-2" onkeypress="return soloDecimal(event)" onblur="totalDedu_SalNeto()" autocomplete="off">
+          <input type="text"  value="0" id="desc-2" onkeypress="return soloDecimal(event)" onblur="totalDedu_SalNeto() && verificarPunto(event)" autocomplete="off">
         </div>
         <div class="input-deducciones">
           <label for="Descuento3">Descuento3</label>
-          <input type="text"  value="0" id="desc-3" onkeypress="return soloDecimal(event)" onblur="totalDedu_SalNeto()" autocomplete="off">
+          <input type="text"  value="0" id="desc-3" onkeypress="return soloDecimal(event) && verificarPunto(event)" onblur="totalDedu_SalNeto()" autocomplete="off">
         </div>
         <div class="input-deducciones">
           <label for="Total de Deducciones">Total de Deducciones</label>

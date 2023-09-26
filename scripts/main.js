@@ -119,6 +119,22 @@ function totalDedu_SalNeto() {
 
 }
 
+function verificarPunto(evento) {
+  var code = evento.which ? evento.which : evento.keyCode;
+  var input = evento.target.value;
+
+  if (code == 8) {
+    return true;
+  } else if (code == 46) {
+    if (input.indexOf(".") !== -1) {
+      return false;
+    }
+    return true;
+  } else {
+    return true;
+  }
+}
+
 function validar_td_sn(h_trabajados,s_hora,t_dedu,s_neto) {
   if (isNaN(document.getElementById("t-dedu").value) && isNaN(document.getElementById("s-neto").value)) {
     document.getElementById("t-dedu").value = 0;
