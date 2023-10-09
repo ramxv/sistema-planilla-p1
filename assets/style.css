@@ -36,11 +36,9 @@ h1{
 }
 
 select{
-  /* Reset */
   appearance: none;
   border: 0;
   outline: 0;
-  /* Personalize */
   height: 2rem;
   width: 6rem;
   padding: 0rem 4rem 0rem 1rem;
@@ -55,18 +53,15 @@ select{
 &::-ms-expand {
   display: none;
 }
-/* Remove focus outline */
 &:focus {
   outline: none;
 }
-/* <option> colors */
 option {
   color: #000;
   background-color: var(--option-bg);
 }
 
 #form{
-  /* background-color: #ffff; */
   color: #fff;
   font-weight: 500;
   width: 720px;
@@ -97,10 +92,6 @@ option {
   border-radius: 4px;
   box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
 }
-/* 
-.cedula-container input::placeholder{
-  color: #000;
-} */
 
 /* ! Sección Nombres */
 

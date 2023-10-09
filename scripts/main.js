@@ -77,11 +77,6 @@ function totalDedu_SalNeto() {
   const desc2 = parseFloat(document.getElementById("desc-2").value);
   const desc3 = parseFloat(document.getElementById("desc-3").value);
 
-  // // * Restringe el valor de descuento a dos decimales
-  // document.getElementById("desc-1").value = desc1.toFixed(2);
-  // document.getElementById("desc-2").value = desc2.toFixed(2);
-  // document.getElementById("desc-3").value = desc3.toFixed(2);
-
   const t_dedu = (parseFloat(s_social) + parseFloat(s_edu) + parseFloat(i_renta) + parseFloat(desc1) + parseFloat(desc2) + parseFloat(desc3)).toFixed(2);
   const s_neto = ((s_bruto - t_dedu)).toFixed(2);
 
