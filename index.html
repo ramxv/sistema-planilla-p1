@@ -35,15 +35,15 @@
           <option value="12">12</option>
           <option value="13">13</option>
         </select>
-        <input type="text" name="tomo" id="cedula-tomo" placeholder="0000" min="10" max="9999" onkeypress="return soloNumeros(event)" maxlength="4" autocomplete="off" onblur="validacionCed()" required>
-        <input type="text" name="asiento" id="cedula-asiento" placeholder="00000" min="10" max="99999" onkeypress="return soloNumeros(event)" maxlength="5" autocomplete="off" onblur="validacionCed()" required>
+        <input type="text" name="tomo" id="cedula-tomo" class="cedula" placeholder="0000" min="10" max="9999" onkeypress="return soloNumeros(event)" maxlength="4" autocomplete="off" onblur="validacionCed()" required>
+        <input type="text" name="asiento" id="cedula-asiento" class="cedula" placeholder="00000" min="10" max="99999" onkeypress="return soloNumeros(event)" maxlength="5" autocomplete="off" onblur="validacionCed()" required>
       </div>
 
       <!-- * Sección Nombres -->
       <div class="nombre-container">
         <div class="input-box">
           <label for="primer-nombre">Primer Nombre</label>
-          <input type="text" name="primer-nombre" id="primer-nombre" maxlength="15" onkeypress="return soloLetras(event)" onblur="validacionNombre()" autocomplete="off" required>
+          <input type="text" name="primer-nombre" class="nombre" id="primer-nombre" maxlength="15" onkeypress="return soloLetras(event)" onblur="validacionNombre()" autocomplete="off" required>
         </div>
         <div class="input-box">
           <label for="segundo-nombre">Segundo Nombre</label>
@@ -51,12 +51,14 @@
         </div>
         <div class="input-box">
           <label for="primer-apellido">Primer Apellido</label>
-          <input type="text" name="primer-apellido" id="primer-apellido" maxlength="15" onkeypress="return soloLetras(event)" onblur="validacionApellido()" autocomplete="off" required>
+          <input type="text" name="primer-apellido" class="nombre" id="primer-apellido" maxlength="15" onkeypress="return soloLetras(event)" onblur="validacionApellido()" autocomplete="off" required>
         </div>
         <div class="input-box">
           <label for="segundo-apellido">Segundo Apellido</label>
           <input type="text" name="segundo-apellido" id="segundo-apellido" maxlength="15" onkeypress="return soloLetras(event)" autocomplete="off" >
         </div>
+      </div>
+      <div class="acasada-container">
         <div class="input-box">
           <label for="select-casada">¿Tiene apellido de casada?</label>
           <select name="select-casada" id="select-casada">
@@ -74,12 +76,39 @@
       <div class="salario-container">
         <div class="input-box">
           <label for="h-trabajadas">Horas Trabajadas</label>
-          <input type="text" name="h-trabajadas" id="h-trabajadas" onkeypress="return soloNumeros(event)" maxlength="3" onblur="calcImpuestos()" autocomplete="off" required>
+          <input type="text" name="h-trabajadas" id="h-trabajadas" class="salario" onkeypress="return soloNumeros(event)" maxlength="3" onblur="calcImpuestos()" autocomplete="off" required>
         </div>
         <div class="input-box">
           <label for="s-hora">Salario por Hora</label>
-          <input type="text" name="s-hora" id="s-hora" onkeypress="return soloDecimal(event) && verificarPunto(event)" maxlength="5" onblur="calcImpuestos()" autocomplete="off" required>
+          <input type="text" name="s-hora" id="s-hora" class="salario" onkeypress="return soloDecimal(event) && verificarPunto(event)" maxlength="5" onblur="calcImpuestos()" autocomplete="off" required>
         </div>
+        <!-- * Horas Extras -->
+        <div class="input-box">
+          <label for="select-he">¿Realizo Horas Extras?</label>
+          <select name="select-he" id="select-he" onclick="validacionHE()">
+            <option value="No">No</option>
+            <option value="Sí">Sí</option>
+          </select>
+        </div>
+        <div class="he-container">
+          <div class="input-box">
+            <label for="he-diurna">Horas Extras 25%</label>
+            <input type="text" name="he-diurna" id="he-diurna" onkeypress="return soloDecimal(event) && verificarPunto(event)" maxlength="4" onblur="calcImpuestos()" autocomplete="off" required>
+          </div>
+          <div class="input-box">
+            <label for="he-nocturna">Horas Extras 50%</label>
+            <input type="text" name="he-nocturna" id="he-nocturna" onkeypress="return soloDecimal(event) && verificarPunto(event)" maxlength="4" onblur="calcImpuestos()" autocomplete="off" required>
+          </div>
+          <div class="input-box">
+            <label for="he-mixta">Horas Extras 75%</label>
+            <input type="text" name="he-mixta" id="he-mixta" onkeypress="return soloDecimal(event) && verificarPunto(event)" maxlength="4" onblur="calcImpuestos()" autocomplete="off" required>
+          </div>
+        </div>
+        <div class="input-box">
+          <label for="he-total">Total de Horas Extras</label>
+          <input type="text" name="he-total" id="he-total" disabled>
+        </div>
+        <!-- * Salario Bruto -->
         <div class="input-box">
           <label for="Salario Bruto">Salario Bruto</label>
           <input type="text" name="s-bruto" id="s-bruto" disabled >

@@ -1,3 +1,9 @@
+
+// TODO: Crear un sección en el sistema de planilla donde permita al usuario ingresar las Horas Extras de su jornada laboral (Diurna, Nocturna y Mixta).
+// ! 25% adicional - Horas extras en período diurno.
+// ! 50% de recargo - Si se hace en período nocturno o se extienda a la jornada mixta iniciada en período diurno.
+// ! 75% - Jornada nocturno o extensión de la jornada mixta iniciada en período nocturno. 
+
 // * Función para restringir números en campos de nombre
 function soloLetras(evento) {
   var code = (evento.which) ? evento.which : evento.keycode;
@@ -38,9 +44,13 @@ function calcImpuestos() {
   // * Declaración de variables 
   const h_trabajados = document.getElementById("h-trabajadas").value;
   const s_hora = document.getElementById("s-hora").value;
+  const he_diurna = document.getElementById("he-diurna").value;
+  const he_nocturna =  document.getElementById("he-nocturna").value;
+  const he_mixta = document.getElementById("he-mixta").value;
 
   // * Operaciones de los impuestos
-  const s_bruto = (parseFloat(h_trabajados) * parseFloat(s_hora)).toFixed(2);
+  const he_total = ((s_hora*1.25)*he_diurna) + ((s_hora*1.50)*he_nocturna) + ((s_hora*1.75)*he_mixta);
+  const s_bruto = parseFloat((h_trabajados * s_hora) + he_total).toFixed(2);
   const monto_anual = (s_bruto * 12);
   const s_social = (s_bruto * 0.0975).toFixed(2);
   const s_edu = (s_bruto * 0.0125).toFixed(2);
@@ -51,12 +61,41 @@ function calcImpuestos() {
   } else {
     document.getElementById("i-r").value = 0;
   }
+  
+  validarSxH(s_hora, s_bruto, s_social, s_edu, i_renta, h_trabajados, he_total);
+  totalDedu_SalNeto(h_trabajados,s_hora,s_bruto,s_social,s_edu,i_renta);
+}
 
-  validarSxH(s_hora, s_bruto, s_social, s_edu, i_renta, h_trabajados);
+function validacionHE() {
+  if (document.getElementById("select-he").value == "No") {
+    document.getElementById("he-diurna").disabled = true;
+    document.getElementById("he-nocturna").disabled = true;
+    document.getElementById("he-mixta").disabled = true;
+  } else {
+    document.getElementById("he-diurna").disabled = false;
+    document.getElementById("he-nocturna").disabled = false;
+    document.getElementById("he-mixta").disabled = false;
+  }
+}
+
+function validarSxH(s_hora, s_bruto, s_social, s_edu, i_renta, h_trabajados, he_total) {
+  if (s_hora == "" || h_trabajados == "") {
+    document.getElementById("s-bruto").value = 0;
+    document.getElementById("s-social").value = 0;
+    document.getElementById("s-edu").value = 0;
+    document.getElementById("i-r").value = 0;
+    document.getElementById("he-total").value = 0;
+  }else{
+    document.getElementById("s-bruto").value = s_bruto;
+    document.getElementById("s-social").value = s_social;
+    document.getElementById("s-edu").value = s_edu;
+    document.getElementById("i-r").value = i_renta;
+    document.getElementById("he-total").value = parseFloat(he_total).toFixed(2);
+  }
 }
 
 // ! Calcula el monto anual
-function montoAnual(monto_anual,i_renta) {
+function montoAnual(monto_anual) {
   if (monto_anual > 11000 && monto_anual < 50000) {
     
   } else {
@@ -65,22 +104,10 @@ function montoAnual(monto_anual,i_renta) {
 }
 
 // ! Calcula el total de las deducciones y SalarioNeto
-function totalDedu_SalNeto() {
-  const h_trabajados = document.getElementById("h-trabajadas").value;
-  const s_hora = document.getElementById("s-hora").value;
-  const s_bruto = parseFloat(h_trabajados) * parseFloat(s_hora).toFixed(2);
-  const monto_anual = (s_bruto * 12);
-  const s_social = (s_bruto * 0.0975).toFixed(2);
-  const s_edu = (s_bruto * 0.0125).toFixed(2);
-  const i_renta = (((monto_anual - 11000) * 0.15)/12).toFixed(2);
+function totalDedu_SalNeto(h_trabajados,s_hora,s_bruto,s_social,s_edu,i_renta) {
   const desc1 = parseFloat(document.getElementById("desc-1").value);
   const desc2 = parseFloat(document.getElementById("desc-2").value);
   const desc3 = parseFloat(document.getElementById("desc-3").value);
-
-  // // * Restringe el valor de descuento a dos decimales
-  // document.getElementById("desc-1").value = desc1.toFixed(2);
-  // document.getElementById("desc-2").value = desc2.toFixed(2);
-  // document.getElementById("desc-3").value = desc3.toFixed(2);
 
   const t_dedu = (parseFloat(s_social) + parseFloat(s_edu) + parseFloat(i_renta) + parseFloat(desc1) + parseFloat(desc2) + parseFloat(desc3)).toFixed(2);
   const s_neto = ((s_bruto - t_dedu)).toFixed(2);
@@ -116,13 +143,11 @@ function totalDedu_SalNeto() {
   }
 
   validar_td_sn(h_trabajados, s_hora, t_dedu, s_neto);
-
 }
 
 function verificarPunto(evento) {
   var code = evento.which ? evento.which : evento.keyCode;
   var input = evento.target.value;
-
   if (code == 8) {
     return true;
   } else if (code == 46) {

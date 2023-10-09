@@ -36,11 +36,9 @@ h1{
 }
 
 select{
-  /* Reset */
   appearance: none;
   border: 0;
   outline: 0;
-  /* Personalize */
   height: 2rem;
   width: 6rem;
   padding: 0rem 4rem 0rem 1rem;
@@ -55,18 +53,17 @@ select{
 &::-ms-expand {
   display: none;
 }
-/* Remove focus outline */
+
 &:focus {
   outline: none;
 }
-/* <option> colors */
+
 option {
   color: #000;
   background-color: var(--option-bg);
 }
 
 #form{
-  /* background-color: #ffff; */
   color: #fff;
   font-weight: 500;
   width: 720px;
@@ -97,12 +94,37 @@ option {
   border-radius: 4px;
   box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
 }
-/* 
-.cedula-container input::placeholder{
-  color: #000;
-} */
+
+.cedula-container .cedula:required{
+  border: 1px solid red;
+}
+
+.cedula-container .cedula:valid{
+  border: 1px solid green;
+}
+
+.cedula-container .cedula:disabled{
+  background-color: rgba(94,104,121,0.3);
+}
 
 /* ! Sección Nombres */
+.nombre-container .input-box .nombre:invalid{
+  border: 1px solid red;
+}
+
+.nombre-container .input-box .nombre:valid{
+  border: 1px solid green;
+}
+
+.nombre-container .input-box .nombre:disabled{
+  background-color: rgba(94,104,121,0.3);
+}
+
+.nombre-container{
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: auto 456px;
+}
 
 .nombre-container .input-box{
   padding: 8px;
@@ -125,6 +147,26 @@ option {
   box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
 }
 
+.acasada-container .input-box{
+  padding: 8px;
+}
+
+.acasada-container label{
+  display: block;
+  padding-bottom: 5px;
+}
+
+.acasada-container .input-box input{
+  letter-spacing: 1px;
+  font-style: 'Roboto', sans-serif;
+  font-size: 14px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+}
 /* ! Sección Salario */
 
 .salario-container label{
@@ -139,8 +181,30 @@ option {
   padding: 8px;
 }
 
+.salario-container .input-box label{
+  padding-bottom: 5px;
+}
+
+.salario-container .input-box #h-trabajadas:invalid, 
+.salario-container .input-box #s-hora:invalid{
+  border: 1px solid red;
+}
+
+.salario-container .input-box #h-trabajadas:valid, 
+.salario-container .input-box #s-hora:valid{
+  border: 1px solid green;
+}
+
+.salario-container .input-box #h-trabajadas:disabled, 
+.salario-container .input-box #s-hora:disabled{
+  background-color: rgba(94,104,121,0.3);
+}
+
 .salario-container .input-box #h-trabajadas,
-.salario-container .input-box #s-hora{
+.salario-container .input-box #s-hora,
+.salario-container .input-box #he-diurna,
+.salario-container .input-box #he-nocturna,
+.salario-container .input-box #he-mixta{
   letter-spacing: 2px;
   font-size: 14px;
   height: 30px;
@@ -151,7 +215,33 @@ option {
   box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
 }
 
-.salario-container .input-box #s-bruto{
+.he-container{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+}
+
+.salario-container .input-box #he-diurna:invalid,
+.salario-container .input-box #he-nocturna:invalid,
+.salario-container .input-box #he-mixta:invalid{
+  border: 1px solid red;
+}
+
+.salario-container .input-box #he-diurna:valid,
+.salario-container .input-box #he-nocturna:valid,
+.salario-container .input-box #he-mixta:valid{
+  border: 1px solid green;
+}
+
+.salario-container .input-box #he-diurna:disabled,
+.salario-container .input-box #he-nocturna:disabled,
+.salario-container .input-box #he-mixta:disabled{
+  background-color: rgba(94,104,121,0.3);
+}
+
+
+.salario-container .input-box #s-bruto,
+.salario-container .input-box #he-total{
   letter-spacing: 2px;
   font-size: 14px;
   color: #fff;
