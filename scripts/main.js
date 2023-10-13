@@ -1,9 +1,3 @@
-
-// TODO: Crear un sección en el sistema de planilla donde permita al usuario ingresar las Horas Extras de su jornada laboral (Diurna, Nocturna y Mixta).
-// ! 25% adicional - Horas extras en período diurno.
-// ! 50% de recargo - Si se hace en período nocturno o se extienda a la jornada mixta iniciada en período diurno.
-// ! 75% - Jornada nocturno o extensión de la jornada mixta iniciada en período nocturno. 
-
 // * Función para restringir números en campos de nombre
 function soloLetras(evento) {
   var code = (evento.which) ? evento.which : evento.keycode;

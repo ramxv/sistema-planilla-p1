@@ -58,6 +58,10 @@ select{
   outline: none;
 }
 
+&:focus {
+  outline: none;
+}
+
 option {
   color: #000;
   background-color: var(--option-bg);
